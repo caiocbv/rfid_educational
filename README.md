@@ -2,13 +2,13 @@
 
   Test your knowledge of Radio Frequency Identification (RFID) technology with our interactive quiz app! 📚🔍
 
-** Learn and Challenge: **
+**Learn and Challenge:**
 
   - Explore various concepts about RFID applications, from tracking items to controlling access;
   - Sharpen your understanding of how RFID works in different scenarios;
   - Challenge yourself and expand your expertise using our quiz;
 
-** Educational and Fun: **
+**Educational and Fun:**
 
 Whether you’re a student, developer, or tech enthusiast, our app offers an enjoyable learning experience.
 
@@ -29,5 +29,7 @@ samples, guidance on mobile development, and a full API reference.
 
 # Etapas da Disciplina:
 
+## Mapa Mental
 
+<img src="https://drive.google.com/file/d/1_DGheJwYYE9JMHUIWST70mOvoXBowEep/view?usp=sharing" alt="Logo da Minha Empresa">
 
