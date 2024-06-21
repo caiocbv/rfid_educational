@@ -31,5 +31,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Mapa Mental
 
-<img src="https://drive.google.com/file/d/1_DGheJwYYE9JMHUIWST70mOvoXBowEep/view?usp=sharing" alt="Logo da Minha Empresa">
+<img src="https://drive.usercontent.google.com/u/0/uc?id=1_DGheJwYYE9JMHUIWST70mOvoXBowEep&export=download" alt="Primeiro Mapa Mental do Aplicativo">
+
+
 
