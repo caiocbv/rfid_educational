@@ -1,4 +1,4 @@
-import 'package:quiz/utils/quiz_card.dart';
+import 'package:rfid_educational/utils/quiz_card.dart';
 
 class NewQuizModel {
   var quizName = "";

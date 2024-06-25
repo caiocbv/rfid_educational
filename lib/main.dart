@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz/Screens/quiz_splash_screen.dart';
+import 'package:rfid_educational/Screens/quiz_splash_screen.dart';
 
 void main() async {
   // await initialize();
