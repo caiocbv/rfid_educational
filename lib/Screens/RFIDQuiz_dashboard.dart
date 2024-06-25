@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz/Screens/quiz_all_list.dart';
-import 'package:quiz/Screens/quiz_home.dart';
-import 'package:quiz/Screens/quiz_profile.dart';
-import 'package:quiz/utils/app_widget.dart';
-import 'package:quiz/utils/quiz_colors.dart';
-import 'package:quiz/utils/quiz_images.dart';
+import 'package:rfid_educational/Screens/quiz_all_list.dart';
+import 'package:rfid_educational/Screens/quiz_home.dart';
+import 'package:rfid_educational/Screens/quiz_profile.dart';
+import 'package:rfid_educational/utils/app_widget.dart';
+import 'package:rfid_educational/utils/quiz_colors.dart';
+import 'package:rfid_educational/utils/quiz_images.dart';
 
 class RFIDQuizDashboard extends StatefulWidget {
   static String tag = '/RFIDQuizDashboard';

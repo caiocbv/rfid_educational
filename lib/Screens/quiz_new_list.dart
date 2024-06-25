@@ -2,14 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz/Screens/repo_screen.dart';
-import 'package:quiz/model/quiz_models.dart';
-import 'package:quiz/utils/app_widget.dart';
-import 'package:quiz/utils/quiz_colors.dart';
-import 'package:quiz/utils/quiz_constant.dart';
-import 'package:quiz/utils/quiz_data_generator.dart';
-import 'package:quiz/utils/quiz_images.dart';
-import 'package:quiz/utils/quiz_strings.dart';
+import 'package:rfid_educational/Screens/repo_screen.dart';
+import 'package:rfid_educational/model/quiz_models.dart';
+import 'package:rfid_educational/utils/app_widget.dart';
+import 'package:rfid_educational/utils/quiz_colors.dart';
+import 'package:rfid_educational/utils/quiz_constant.dart';
+import 'package:rfid_educational/utils/quiz_data_generator.dart';
+import 'package:rfid_educational/utils/quiz_images.dart';
+import 'package:rfid_educational/utils/quiz_strings.dart';
 
 class QuizListing extends StatefulWidget {
   static String tag = '/QuizListing';

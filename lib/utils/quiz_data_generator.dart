@@ -1,6 +1,6 @@
-import 'package:quiz/model/quiz_models.dart';
-import 'package:quiz/utils/quiz_card.dart';
-import 'package:quiz/utils/quiz_images.dart';
+import 'package:rfid_educational/model/quiz_models.dart';
+import 'package:rfid_educational/utils/quiz_card.dart';
+import 'package:rfid_educational/utils/quiz_images.dart';
 
 List<NewQuizModel> getQuizData() {
   List<NewQuizModel> list = [];

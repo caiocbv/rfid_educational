@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz/Screens/quiz_create_password.dart';
-import 'package:quiz/utils/app_widget.dart';
-import 'package:quiz/utils/quiz_colors.dart';
-import 'package:quiz/utils/quiz_constant.dart';
-import 'package:quiz/utils/quiz_strings.dart';
-import 'package:quiz/utils/quiz_widget.dart';
+import 'package:rfid_educational/Screens/quiz_create_password.dart';
+import 'package:rfid_educational/utils/app_widget.dart';
+import 'package:rfid_educational/utils/quiz_colors.dart';
+import 'package:rfid_educational/utils/quiz_constant.dart';
+import 'package:rfid_educational/utils/quiz_strings.dart';
+import 'package:rfid_educational/utils/quiz_widget.dart';
 
 class QuizSignUp extends StatefulWidget {
   static String tag = '/QuizSignUp';

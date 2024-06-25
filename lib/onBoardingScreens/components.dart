@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/onBoardingScreens/utils/colors.dart';
+import 'package:rfid_educational/onBoardingScreens/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screens/RFIDQuizSignIn.dart';

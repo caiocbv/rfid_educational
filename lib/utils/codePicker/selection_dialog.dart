@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz/utils/app_widget.dart';
+import 'package:rfid_educational/utils/app_widget.dart';
 
 import '../../../main.dart';
 import 'country_code.dart';

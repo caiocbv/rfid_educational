@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/Screens/repo_screen.dart';
-import 'package:quiz/model/quiz_models.dart';
-import 'package:quiz/utils/quiz_colors.dart';
-import 'package:quiz/utils/quiz_data_generator.dart';
+import 'package:rfid_educational/Screens/repo_screen.dart';
+import 'package:rfid_educational/model/quiz_models.dart';
+import 'package:rfid_educational/utils/quiz_colors.dart';
+import 'package:rfid_educational/utils/quiz_data_generator.dart';
 
 class QuizSearch extends StatefulWidget {
   static String tag = '/QuizSearch';

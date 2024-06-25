@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/Screens/RFIDQuizSignIn.dart';
+import 'package:rfid_educational/Screens/RFIDQuizSignIn.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz/utils/app_widget.dart';
-import 'package:quiz/utils/quiz_colors.dart';
+import 'package:rfid_educational/utils/app_widget.dart';
+import 'package:rfid_educational/utils/quiz_colors.dart';
 
 import '../onBoardingScreens/view/onBoardingScreen.dart';
 

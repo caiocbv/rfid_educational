@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:rfid_educational/utils/quiz_colors.dart';
 
 Widget text(
   String? text, {
@@ -26,7 +27,7 @@ Widget text(
     style: TextStyle(
       fontFamily: fontFamily,
       fontSize: fontSize,
-      color: textColor ?? textSecondaryColor,
+      color: textColor ?? quiztextColorSecondary,
       height: 1.5,
       letterSpacing: latterSpacing,
       decoration: lineThrough ? TextDecoration.lineThrough : TextDecoration.none,
