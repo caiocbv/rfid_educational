@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rfid_educational/Screens/quiz_details.dart';
 import 'package:rfid_educational/Screens/repo_screen.dart';
 import 'package:rfid_educational/model/quiz_models.dart';
 import 'package:rfid_educational/utils/quiz_colors.dart';
@@ -29,5 +30,7 @@ class _QuizSearchState extends State<QuizSearch> {
       backgroundColor: quizappbackground,
       body: RepoScreen(enableAppbar: true),
     );
+
+    //return QuizDetails(mListings[index], index).launch(context);
   }
 }

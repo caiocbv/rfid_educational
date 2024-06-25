@@ -10,6 +10,7 @@ import 'package:rfid_educational/utils/quiz_constant.dart';
 import 'package:rfid_educational/utils/quiz_data_generator.dart';
 import 'package:rfid_educational/utils/quiz_strings.dart';
 
+//Screen from
 class QuizAllList extends StatefulWidget {
   static String tag = '/QuizAllList';
 
@@ -34,7 +35,7 @@ class _QuizAllListState extends State<QuizAllList> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
 
-    final quizAll = StaggeredGridView.countBuilder(
+    final quizAll = StaggeredGridView.countBuilder( //Settings for ALL vision
       crossAxisCount: 4,
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
@@ -56,34 +57,40 @@ class _QuizAllListState extends State<QuizAllList> {
                     topLeft: Radius.circular(16.0),
                     topRight: Radius.circular(16.0),
                   ),
-                  child: CachedNetworkImage(
+                  child: CachedNetworkImage( //Setting for images 
                     placeholder: placeholderWidgetFn() as Widget Function(BuildContext, String)?,
                     imageUrl: mListings[index].quizImage,
-                    height: width * 0.25,
-                    width: width * 0.25,
+                    height: width * 0.22,
+                    width: width * 0.39,
                     fit: BoxFit.cover,
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(
+                  width: width * 0.39,
+                  decoration: const BoxDecoration( //Description Setting
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
-                      bottomRight: Radius.circular(16.0),
+                      bottomRight: Radius.circular(16.0)
                     ),
-                    color: quizwhite,
+                    color: quizwhite, //Description Color Setting
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       text(
                         mListings[index].quizName,
-                        fontSize: textSizeMedium,
+                        fontSize: textSizeSMedium,
                         maxLine: 2,
                         fontFamily: fontMedium,
+                        isCentered: true,
                       ).paddingOnly(top: 8, left: 16, right: 16, bottom: 8),
                       text(
                         mListings[index].totalQuiz,
+                        fontSize: textSizeLarge,
                         textColor: quiztextColorSecondary,
+                        isCentered: true,
+                        isBold: true,
+                        isShadow: true,
                       ).paddingOnly(left: 16, right: 16, bottom: 8),
                     ],
                   ),
@@ -98,7 +105,7 @@ class _QuizAllListState extends State<QuizAllList> {
       //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.67, mainAxisSpacing: 16, crossAxisSpacing: 16),
     );
 
-    Widget quizCompleted = StaggeredGridView.countBuilder(
+    Widget quizCompleted = StaggeredGridView.countBuilder( //Settings for COMPLETED vision
       crossAxisCount: 4,
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
@@ -116,20 +123,27 @@ class _QuizAllListState extends State<QuizAllList> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16.0),
-                    topRight: Radius.circular(16.0),
-                  ),
-                  child: CachedNetworkImage(
-                    placeholder: placeholderWidgetFn() as Widget Function(BuildContext, String)?,
-                    imageUrl: mListings[index].quizImage,
-                    height: width * 0.4,
-                    width: width * 0.25,
-                    fit: BoxFit.cover,
-                  ),
+                Row(
+                  children:<Widget>[
+                     ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16.0),
+                            topRight: Radius.circular(16.0),
+                            bottomLeft: Radius.circular(16.0),
+                            bottomRight: Radius.circular(16.0),
+                          ),
+                          child: CachedNetworkImage(
+                            placeholder: placeholderWidgetFn() as Widget Function(BuildContext, String)?,
+                            imageUrl: mListings[index].quizImage,
+                            height: width * 0.6,
+                            width: width * 0.25,
+                            fit: BoxFit.cover,
+                          ),
+                      ),
+                  ],
                 ),
                 Container(
+                  
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
@@ -142,7 +156,7 @@ class _QuizAllListState extends State<QuizAllList> {
                     children: <Widget>[
                       text(
                         mListings[index].quizName,
-                        fontSize: textSizeMedium,
+                        fontSize: textSizeSMedium,
                         maxLine: 2,
                         fontFamily: fontMedium,
                       ).paddingOnly(top: 8, left: 16, right: 16, bottom: 8),
@@ -152,7 +166,7 @@ class _QuizAllListState extends State<QuizAllList> {
                       ).paddingOnly(left: 16, right: 16, bottom: 16),
                       LinearProgressIndicator(
                         value: 0.5,
-                        backgroundColor: textSecondaryColor.withOpacity(0.2),
+                        backgroundColor: textSecondaryColor.withOpacity(0.36),
                         valueColor: const AlwaysStoppedAnimation<Color>(quizgreen),
                       ).paddingOnly(left: 16, right: 16, bottom: 16),
                     ],
@@ -194,14 +208,14 @@ class _QuizAllListState extends State<QuizAllList> {
                           });
                         },
                         child: Container(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),//Size of Top buttons
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(spacingmiddle),
                               bottomLeft: Radius.circular(spacingmiddle),
                             ),
-                            color: selectedPos == 1 ? quizwhite : Colors.transparent,
+                            color: selectedPos == 1 ? quizwhiteBottom : Colors.transparent,
                             border: Border.all(
                               color: selectedPos == 1 ? quizwhite : Colors.transparent,
                             ),
@@ -232,14 +246,14 @@ class _QuizAllListState extends State<QuizAllList> {
                           });
                         },
                         child: Container(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(8.0), //Size of Top buttons
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
                               topRight: Radius.circular(spacingmiddle),
                               bottomRight: Radius.circular(spacingmiddle),
                             ),
-                            color: selectedPos == 2 ? quizwhite : Colors.transparent,
+                            color: selectedPos == 2 ? quizwhiteBottom : Colors.transparent,
                             border: Border.all(
                               color: selectedPos == 2 ? quizwhite : Colors.transparent,
                             ),

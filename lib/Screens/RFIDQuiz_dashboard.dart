@@ -20,7 +20,7 @@ class RFIDQuizDashboard extends StatefulWidget {
 class _RFIDQuizDashboardState extends State<RFIDQuizDashboard> {
   var selectedIndex = 0;
 
-  var pages = [
+  var pages = [ //Set all Screen Here
    const QuizHome(),
    const QuizAllList(),
    const QuizProfile(),
@@ -69,7 +69,7 @@ class _RFIDQuizDashboardState extends State<RFIDQuizDashboard> {
     return Scaffold(
       backgroundColor: quizappbackground,
       body: SafeArea(
-        child: pages[selectedIndex],
+        child: pages[selectedIndex], // Open the Screens here
       ),
       bottomNavigationBar: Container(
         //padding: EdgeInsets.all(20),

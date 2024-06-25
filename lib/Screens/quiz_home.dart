@@ -1,4 +1,7 @@
+//import 'dart:js_util';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:rfid_educational/Screens/quiz_details.dart';
@@ -22,16 +25,23 @@ class QuizHome extends StatefulWidget {
 }
 
 class _QuizHomeState extends State<QuizHome> {
-  late List<NewQuizModel> mListings;
+  late List<NewQuizModel> mListings = List<NewQuizModel>.empty();
+  final TextEditingController _text = TextEditingController(text: "Search");
+  late List<String> suggestions;
+  late List<String> _filteredSuggestions;
 
   @override
   void initState() {
     super.initState();
     mListings = getQuizData();
+    suggestions = List<String>.empty(growable:true);
   }
 
   @override
   Widget build(BuildContext context) {
+    for(NewQuizModel x in mListings){
+      suggestions.add(x.quizName);
+    }
     return Scaffold(
       backgroundColor: quizappbackground,
       body: SafeArea(
@@ -41,6 +51,36 @@ class _QuizHomeState extends State<QuizHome> {
               padding:const EdgeInsets.only(bottom: 16),
               child: Column(
                 children: <Widget>[
+                  Container(
+                      alignment: Alignment.bottomCenter,
+                      color: quizwhite,
+                      //margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
+                      padding: const EdgeInsets.all(8.0),
+                      child: CupertinoSearchTextField(
+                          controller: _text,
+                          onChanged: (value) {
+                            setState(() {
+                              _filteredSuggestions = suggestions.where((suggestion) => suggestion.toLowerCase().contains(value.toLowerCase())).toList();
+                            });
+                            
+                          },                          
+                          onSubmitted:(value){
+                            setState(() {
+                              if(_filteredSuggestions.length > 1){
+                                NewQuizModel? first = mListings.where((element) => element.quizName.contains(_filteredSuggestions.elementAt(0))).firstOrNull;
+                                if(first==null){
+                                  setState(() {
+                                    _text.text = "We don't found any results."; //TODO ainda não funciona
+                                  });
+                                }else{
+                                  QuizDetails(first, mListings.indexOf(first)).launch(context);
+                                }
+                              }
+                            });
+                          },
+
+                      ),
+                  ),
                  const SizedBox(height: 40),
                  //Texto superior
                   text(quizlblhiantonio, fontFamily: fontBold, fontSize: textSizeXLarge,textColor: quiztextColorSecondary,isBold:true, isShadow: true),
@@ -55,20 +95,20 @@ class _QuizHomeState extends State<QuizHome> {
                         text(quizlblnewquiz, textAllCaps: false, fontFamily: fontBold, fontSize: textSizeMedium, textColor: quiztextColorSecondary, isBold: true),
                         //Texto - View All
                         text(
-                          quizlblviewall,
+                          quizlblviewall,//"View All"
                           textColor: quiztextColorSecondary,
                           isBold: true,
                           fontSize: textSizeMedium
                         ).onTap(() {
                           setState(() {
-                           const QuizListing().launch(context);
+                           const QuizListing().launch(context);//Screen - View All
                           });
                         }),
                       ],
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.width * 0.8,
+                    height: MediaQuery.of(context).size.width * 0.85,
                     //height: 300,
                     //Criando um listview
                     child: ListView.builder(
@@ -78,32 +118,14 @@ class _QuizHomeState extends State<QuizHome> {
                       physics:const ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) => GestureDetector(
                         onTap: () {
-                          QuizDetails(mListings[index], index).launch(context);
+                          QuizDetails(mListings[index], index).launch(context);//Screen View a Quiz
                         },
                         child: NewQuiz(mListings[index], index),
                       ),
                     ),
                   ).paddingOnly(bottom: 16),
-                 const SizedBox(height: 30),
-                 Container(
-                    margin:const EdgeInsets.all(16.0),
-                    decoration: boxDecoration(radius: 10, showShadow: true, bgColor: quizwhite),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Expanded(child: quizEditTextStyle(quizlblsearch, isPassword: false)),
-                        Container(
-                          margin:const EdgeInsets.only(right: 10),
-                          decoration: boxDecoration(radius: 10, showShadow: false, bgColor: quizcolorPrimary),
-                          padding:const EdgeInsets.all(10),
-                          child:const Icon(Icons.search, color: quizwhite),
-                        ).onTap(() {
-                        const  QuizSearch().launch(context);
-                          setState(() {});
-                        })
-                      ],
-                    ),
-                  ),
+                 const SizedBox(height: 100),
+                 
                 ],
               ),
             ),
@@ -126,6 +148,7 @@ class NewQuiz extends StatelessWidget {
 
     return Container(
       margin:const EdgeInsets.only(left: 16),
+      height: MediaQuery.of(context).size.height *1.2,
       width: MediaQuery.of(context).size.width * 0.75,
       decoration: boxDecoration(radius: 16, showShadow: true, bgColor: quizwhite),
       child:  Column(
@@ -134,23 +157,19 @@ class NewQuiz extends StatelessWidget {
           Stack(
             alignment: Alignment.bottomCenter,
             children: <Widget>[
-              ClipRRect( //Imagem Lupa
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16.0),
-                    topRight: Radius.circular(16.0)
-                ),
+              ClipOval( //Imagem Lupa
                 child: CachedNetworkImage(
                     placeholder: placeholderWidgetFn() as Widget Function(BuildContext, String)?,
                     imageUrl: model.quizImage,
-                    height: w * 0.35,
-                    width: MediaQuery.of(context).size.width * 0.35,
-                    fit: BoxFit.fill
-                ).paddingTop(w * 0.08), //Padding acima da imagem de lupa         
+                    height: w * 0.45,
+                    width: w * 0.45,
+                    fit: BoxFit.cover
+                ),         
               ),
             ],
-          ),
+          ).paddingTop(w*0.1),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(13.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
