@@ -7,32 +7,32 @@ List<NewQuizModel> getQuizData() {
   NewQuizModel model1 = NewQuizModel();
   model1.quizName = "RFID\nSoftware and Applications";
   model1.totalQuiz = "11 Lessons";
-  model1.quizImage = quizicstudy1;
+  model1.quizImage = quiza1;
 
   NewQuizModel model2 = NewQuizModel();
   model2.quizName = "Protocols and Security";
   model2.totalQuiz = "2 Lessons";
-  model2.quizImage = quizicstudy2;
+  model2.quizImage = quiza2;
 
   NewQuizModel model3 = NewQuizModel();
   model3.quizName = "Circuits and Devices";
   model3.totalQuiz = "5 Lessons";
-  model3.quizImage = quiziccourse3;
+  model3.quizImage = quiza3;
 
   NewQuizModel model4 = NewQuizModel();
   model4.quizName = "Next-Gen RFID:\n Green Technologies?";
   model4.totalQuiz = "4 Lessons";
-  model4.quizImage = quiziccourse1;
+  model4.quizImage = quiza4;
 
   NewQuizModel model5 = NewQuizModel();
   model5.quizName = "Channel Modeling\n and Measurements";
   model5.totalQuiz = "2 Lessons";
-  model5.quizImage = quiziccommunication;
+  model5.quizImage = quiza5;
 
   NewQuizModel model6 = NewQuizModel();
   model6.quizName = "Antenna Theory\n and Design";
   model6.totalQuiz = "4 Lessons";
-  model6.quizImage = quiziccourse2;
+  model6.quizImage = quiza6;
 
   list.add(model1);
   list.add(model2);
