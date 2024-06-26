@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:rfid_educational/Screens/repo_screen.dart';
@@ -24,7 +26,11 @@ class _QuizCardsState extends State<QuizCards> {
   late int position;
   late double clicks = 0;
   late bool buttonPressed=false;
-  
+  Color _cardColorA = quizwhite;
+  Color _cardColorB = quizwhite; 
+  Color _cardColorC = quizwhite; 
+  Color _cardColorD = quizwhite; 
+
   _QuizCardsState(this.position);
 
   void removeCards(index) {
@@ -32,19 +38,6 @@ class _QuizCardsState extends State<QuizCards> {
       cardList.removeAt(index);
     });
   }
-
-  void plusclick() {
-    setState(() {
-      clicks++;
-    });
-  }
-
-  void isPressedColorChange() {
-    setState(() {
-      buttonPressed = true;
-    });
-  }
-
 
   @override
   void initState() {
@@ -62,7 +55,13 @@ class _QuizCardsState extends State<QuizCards> {
           child: Stack(
             alignment: Alignment.center,
             children: <Widget>[
-              Stack(alignment: Alignment.center, children: cardList),
+              Stack(alignment: Alignment.center, children: cardList).onTap((){ //AO CLICAR NA LETRA A
+                                    setState(() {
+                                       String temp = cardList.elementAt(0).toString().replaceAll("_cardColorA", "green");
+                                       //scarList[0] = Widget.build(temp);
+                                    });
+                                    }
+              ),
               Container(
                 alignment: Alignment.topCenter,
                 child: Row(
@@ -78,13 +77,13 @@ class _QuizCardsState extends State<QuizCards> {
                     ),
                     Expanded(
                       child: 
-                      LinearProgressIndicator(
-                        value: clicks/cardList.length > 1.0? 1.0 : clicks/cardList.length, //calculando a porcentacem de cards passados
-                        backgroundColor: textSecondaryColor.withOpacity(0.2),
+                      LinearProgressIndicator( //IMAGEM PROGRESSAO VERDE EM CIMA
+                        value: (clicks/cardList.length) > 1.0 ? 1.0 : clicks/cardList.length, //calculando a porcentacem de cards passados
+                        backgroundColor: textSecondaryColor.withOpacity(0.3),
                         valueColor:const AlwaysStoppedAnimation<Color>(
                           quizgreen,
                         ),
-                      ).paddingAll(16),
+                      ).paddingAll(10),
                     )
                   ],
                 ),
@@ -97,9 +96,8 @@ class _QuizCardsState extends State<QuizCards> {
   List<Widget> _generateCards(int position) {
     List<QuizTestModel> Allquiz = quizGetData();
     List<Quiz>planetCard = Allquiz[position].allQuiz;
-    List<Widget> cardList = [];
 
-    for (int x = 0; x < planetCard.length; x++) {
+    for (int x = 0; x < planetCard.length; x++) { //PECORRE CADA UM DOS CARDS DAQUELE QUIZ
       cardList.add(
         Positioned(
           top: planetCard[x].topMargin,
@@ -137,21 +135,23 @@ class _QuizCardsState extends State<QuizCards> {
                             child: Column(
                               children: <Widget>[
                                 Card(
-                                    child: InkWell(
-                                      onTap: isPressedColorChange,
-                                      //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                      //decoration: boxDecoration(showShadow: false, bgColor: isPressed? greenColor :cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
-                                      child: ColoredBox(
+                                    child: Container(
+                                    //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                                    color: _cardColorA,
+                                    //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
+                                    padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
+                                    width: 320,
+                                    child: ColoredBox(
                                         color: buttonPressed ? greenColor : cardButtonColor,
                                           child:
                                             Stack(
                                               children: <Widget>[
                                                 Center(
-                                                  child: text(planetCard[x].option1, textColor: quiztextColorSecondary),
+                                                  child: text(planetCard[x].option1, textColor: quiztextColorSecondary)                                                    
                                                 ),
                                                 Align(
                                                   alignment: Alignment.topLeft,
-                                                  child: text("A." + (buttonPressed ? "True":"False"), textColor: quiztextColorSecondary, isBold: true),
+                                                  child: text("A." + (buttonPressed ? "True":"False"), textColor: quiztextColorSecondary, isBold: true)                                                          
                                                 )
                                               ],
                                             ),
@@ -160,7 +160,7 @@ class _QuizCardsState extends State<QuizCards> {
                                 ),Card(
                                     child: Container(
                                     //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                    color: buttonPressed? greenColor :cardButtonColor,
+                                    color: _cardColorB,
                                     //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
                                     padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
                                     width: 320,
@@ -168,11 +168,11 @@ class _QuizCardsState extends State<QuizCards> {
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Center(
-                                          child: text(planetCard[x].option2, textColor: quiztextColorSecondary),
+                                          child: text(planetCard[x].option2, textColor: quiztextColorSecondary)                                                 
                                         ),
                                         Align(
                                           alignment: Alignment.topLeft,
-                                          child: text("B.", textColor: quiztextColorSecondary, isBold: true),
+                                          child: text("B.", textColor: quiztextColorSecondary, isBold: true)                                                  
                                         )
                                       ],
                                     ),
@@ -181,7 +181,7 @@ class _QuizCardsState extends State<QuizCards> {
                                 Card(
                                     child: Container(
                                     //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                    color: buttonPressed? greenColor :cardButtonColor,
+                                    color: _cardColorC,
                                     //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
                                     padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
                                     width: 320,
@@ -189,11 +189,11 @@ class _QuizCardsState extends State<QuizCards> {
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Center(
-                                          child: text(planetCard[x].option3, textColor: quiztextColorSecondary),
+                                          child: text(planetCard[x].option3, textColor: quiztextColorSecondary)                                                  
                                         ),
                                         Align(
                                           alignment: Alignment.topLeft,
-                                          child: text("C.", textColor: quiztextColorSecondary, isBold: true),
+                                          child: text("C.", textColor: quiztextColorSecondary, isBold: true)                                                  
                                         )
                                       ],
                                     ),
@@ -202,7 +202,7 @@ class _QuizCardsState extends State<QuizCards> {
                                 Card(
                                     child: Container(
                                     //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                    color: buttonPressed? greenColor :cardButtonColor,
+                                    color: _cardColorD,
                                     //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
                                     padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
                                     width: 320,
@@ -210,11 +210,11 @@ class _QuizCardsState extends State<QuizCards> {
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Center(
-                                          child: text(planetCard[x].option4, textColor: quiztextColorSecondary),
+                                          child: text(planetCard[x].option4, textColor: quiztextColorSecondary)                                                  
                                         ),
                                         Align(
                                           alignment: Alignment.topLeft,
-                                          child: text("D.", textColor: quiztextColorSecondary, isBold: true),
+                                          child: text("D.", textColor: quiztextColorSecondary, isBold: true)                                                  
                                         )
                                       ],
                                     ),
@@ -230,7 +230,7 @@ class _QuizCardsState extends State<QuizCards> {
               ),
               child: GestureDetector(
                 //onTap: isPressedColorChange,
-                onTap: isPressedColorChange,
+                //onTap: isPressedColorChange,
                 child: Container(
                     decoration: boxDecoration(radius: 20, bgColor: quizwhiteBottom, showShadow: true),
                     child: Column(
@@ -250,7 +250,7 @@ class _QuizCardsState extends State<QuizCards> {
                                 Card(
                                     child: Container(
                                     //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                    color: buttonPressed? greenColor :cardButtonColor,
+                                    color: _cardColorA,
                                     //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
                                     padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
                                     width: 320,
@@ -258,19 +258,24 @@ class _QuizCardsState extends State<QuizCards> {
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Center(
-                                          child: text(planetCard[x].option1, textColor: quiztextColorSecondary),
+                                          child: text(planetCard[x].option1, textColor: quiztextColorSecondary)                                                  
                                         ),
                                         Align(
                                           alignment: Alignment.topLeft,
-                                          child: text("A.", textColor: quiztextColorSecondary, isBold: true),
+                                          child: text("A.", textColor: quiztextColorSecondary, isBold: true)                                                  
                                         )
                                       ],
                                     ),
                                   ),
-                                ),Card(
+                                ).onTap((){ //AO CLICAR NA LETRA A
+                                    setState(() {
+                                      clicks++;
+                                      _cardColorA = quizcolorgreen;
+                                    });
+                                  }),Card(
                                     child: Container(
                                     //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                    color: buttonPressed? greenColor :cardButtonColor,
+                                    color: _cardColorB,
                                     //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
                                     padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
                                     width: 320,
@@ -278,20 +283,25 @@ class _QuizCardsState extends State<QuizCards> {
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Center(
-                                          child: text(planetCard[x].option2, textColor: quiztextColorSecondary),
+                                          child: text(planetCard[x].option2, textColor: quiztextColorSecondary)                                                  
                                         ),
                                         Align(
                                           alignment: Alignment.topLeft,
-                                          child: text("B.", textColor: quiztextColorSecondary, isBold: true),
+                                          child: text("B.", textColor: quiztextColorSecondary, isBold: true)                                                  
                                         )
                                       ],
                                     ),
                                   ),
-                                ),
+                                ).onTap((){ //AO CLICAR NA LETRA B
+                                    setState(() {
+                                      clicks--;
+                                      _cardColorB = quizcolorgreen;
+                                    });
+                                  }),
                                 Card(
                                     child: Container(
                                     //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                    color: buttonPressed? greenColor :cardButtonColor,
+                                    color: _cardColorC,
                                     //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
                                     padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
                                     width: 320,
@@ -299,20 +309,25 @@ class _QuizCardsState extends State<QuizCards> {
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Center(
-                                          child: text(planetCard[x].option3, textColor: quiztextColorSecondary),
+                                          child: text(planetCard[x].option3, textColor: quiztextColorSecondary)                                                 
                                         ),
                                         Align(
                                           alignment: Alignment.topLeft,
-                                          child: text("C.", textColor: quiztextColorSecondary, isBold: true),
+                                          child: text("C.", textColor: quiztextColorSecondary, isBold: true)
                                         )
                                       ],
                                     ),
                                   ),
-                                ),
+                                ).onTap((){ //AO CLICAR NA LETRA C
+                                    setState(() {
+                                      clicks--;
+                                      _cardColorC = quizcolorgreen;
+                                    });
+                                  }),
                                 Card(
                                     child: Container(
                                     //margin:const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                                    color: buttonPressed? greenColor :cardButtonColor,
+                                    color: _cardColorD,
                                     //decoration: boxDecoration(showShadow: false, bgColor: cardButtonColor, radius: 10, color: quizwhiteBottom), //Botoes dos cards
                                     padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
                                     width: 320,
@@ -320,16 +335,21 @@ class _QuizCardsState extends State<QuizCards> {
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Center(
-                                          child: text(planetCard[x].option4, textColor: quiztextColorSecondary),
+                                          child: text(planetCard[x].option4, textColor: quiztextColorSecondary)                                                  
                                         ),
                                         Align(
                                           alignment: Alignment.topLeft,
-                                          child: text("D.", textColor: quiztextColorSecondary, isBold: true),
+                                          child: text("D.", textColor: quiztextColorSecondary, isBold: true)
                                         )
                                       ],
                                     ),
                                   ),
-                                ),
+                                ).onTap((){ //AO CLICAR NA LETRA D
+                                    setState(() {
+                                      clicks--;
+                                      _cardColorD = quizcolorgreen;
+                                    });
+                                  }),
                               ],
                             ),
                         )

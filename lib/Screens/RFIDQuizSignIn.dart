@@ -36,7 +36,15 @@ class _RFIDQuizSignInState extends State<RFIDQuizSignIn> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-               const SizedBox(height: 16),
+                Container(
+                      decoration: boxDecorationDefault(shape: BoxShape.circle),
+                      child: commonCacheImageWidget(
+                        "images/quiz/rfid_jump.png",
+                        height: 180,
+                      ).cornerRadiusWithClipRRect(90)
+                ),
+               const SizedBox(height: 16),//ADICONAR IMAGEM AQUI
+               //LOGIN
                 text(quiztitlelogin, textColor: quiztextColorPrimary,fontSize: textSizeXXLarge, isBold: true, isShadow: true),
                 text(quizinfologin, textColor: quiztextColorSecondary, isLongText: true, isCentered: true).center(),
                 Container(
