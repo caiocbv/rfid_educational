@@ -43,7 +43,7 @@ Widget text(
   );
 }
 
-BoxDecoration boxDecoration({double radius = 2, Color color = Colors.transparent, Color? bgColor, var showShadow = false}) {
+BoxDecoration boxDecoration({double radius = 2, Color color = Colors.transparent, Color? bgColor, bool showShadow = false}) {
   return BoxDecoration(
     color: bgColor,
     boxShadow: showShadow ? defaultBoxShadow(shadowColor: shadowColorGlobal) : [ const BoxShadow(color: Colors.transparent)],

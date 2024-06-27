@@ -10,15 +10,15 @@ late  String option4;
 late  String cardImage;
   double? topMargin;
 
-late int? correctedOption;
+late int correctedOption;
 
-  Quiz( String imagePath, String o1, String o2, String o3, String o4, double marginTop, int correctedOption) {
+  Quiz( String imagePath, String o1, String o2, String o3, String o4, double marginTop, int expectedResult) {
     option1 = o1;
     option2 = o2;
     option3 = o3;
     option4 = o4;
     cardImage = imagePath;
     topMargin = marginTop;
-    correctedOption = correctedOption;
+    correctedOption = expectedResult;
   }
 }

@@ -23,60 +23,11 @@ class Items {
     required this.chat,
   });
 }
-/*
-  How many components does the RFID system consist of?
-A) One
-B) Two
-C) Three
-D) Four (Answer: B) Two1
-What are the different kinds of radio frequency identification (RFID) tags?
-A) Active
-B) Semi-passive
-C) Passive
-D) All of the above (Answer: D) All of the above1
-Which tag doesn’t have its own power supply?
-A) Active
-B) Semi-passive
-C) Passive (Answer: C) Passive1
-In which RFID tag is the range less?
-A) Active
-B) Semi-passive
-C) Passive (Answer: C) Passive1
-How many components does the RFID reader consist of?
-A) One
-B) Two
-C) Three
-D) Four (Answer: C) Three1
-In which frequency range does the RFID system operate?
-A) High-frequency
-B) Low-frequency
-C) Ultra high-frequency
-D) All of the above (Answer: D) All of the above1
-What is the range of RFID tags using low frequency?
-A) Up to 10 cm
-B) Up to 60 cm
-C) Up to 80 cm (Answer: A) Up to 10 cm1
-What is the range of RFID tags using high frequency?
-A) Up to 10 cm
-B) Up to 1 meter
-C) Up to 80 cm (Answer: B) Up to 1 meter1
-What is the range of RFID tags using ultra-high frequency?
-A) Up to 10 cm
-B) Up to 60 cm
-C) 10 to 15 meters (Answer: C) 10 to 15 meters1
-For high-frequency and low-frequency RFID tags, the working principle is based on:
-A) Inductive coupling
-B) Electromagnetic coupling
-C) Both A and B (Answer: C) Both A and B1
-For ultra-high frequency RFID tags, the working principle is based on:
-A) Inductive coupling
-B) Electromagnetic coupling
-C) Both A and B (Answer: B) Electromagnetic coupling
-*/
+
 //  onBoardingScreens Intro Contents for Quiz App
 List<Items> listOfItems = [
   Items(
-    img: "images/quiz/rfid_question.png",
+    img: "images/quiz/a10.jpg",
     title: "Challenge your friends",
     subTitle:
     "Engage in quiz challenges with your friends\nand family using our app.",
@@ -96,7 +47,7 @@ List<Items> listOfItems = [
     ),
   ),
   Items(
-    img: "images/quiz/rfid_question.png",
+    img: "images/quiz/a3.jpg",
     title: "Discover quiz enthusiasts",
     subTitle:
     "Connect with new people who share your\npassion for quizzes around the world.",

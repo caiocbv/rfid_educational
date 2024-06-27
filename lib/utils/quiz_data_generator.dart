@@ -7,12 +7,12 @@ List<NewQuizModel> getQuizData() {
   NewQuizModel model1 = NewQuizModel();
   model1.quizName = "RFID\nSoftware and Applications";
   model1.totalQuiz = "11 Lessons";
-  model1.quizImage = quiza1;
+  model1.quizImage = quiza2;
 
   NewQuizModel model2 = NewQuizModel();
   model2.quizName = "Protocols and Security";
   model2.totalQuiz = "2 Lessons";
-  model2.quizImage = quiza2;
+  model2.quizImage = quiza1;
 
   NewQuizModel model3 = NewQuizModel();
   model3.quizName = "Circuits and Devices";
@@ -67,28 +67,28 @@ List<QuizTestModel> quizGetData() {
   // QUIZ 1 - RFID SoFtware and Aplications
   QuizTestModel model1 = QuizTestModel();
   model1.heading = "RFID Applications";
-  model1.image = quiza1;
+  model1.image = quiza2;
   model1.type = "Quiz";
   model1.description = "RFID software, middleware, and networking solutions are critical for managing RFID deployments. From inventory control in retail to smart city applications, software plays a vital role.";
   model1.status = "true";
-  model1.allQuiz.add(listCards[0]);
-  model1.allQuiz.add(listCards[1]);
-  model1.allQuiz.add(listCards[2]);
-  model1.allQuiz.add(listCards[3]);
-  model1.allQuiz.add(listCards[4]);
-  model1.allQuiz.add(listCards[5]);
-  model1.allQuiz.add(listCards[6]);
-  model1.allQuiz.add(listCards[7]);
-  model1.allQuiz.add(listCards[8]);
-  model1.allQuiz.add(listCards[9]);
-  model1.allQuiz.add(listCards[10]);
+  model1.allQuiz.add(listCards.elementAt(0));
+  model1.allQuiz.add(listCards.elementAt(1));
+  model1.allQuiz.add(listCards.elementAt(2));
+  model1.allQuiz.add(listCards.elementAt(3));
+  model1.allQuiz.add(listCards.elementAt(4));
+  model1.allQuiz.add(listCards.elementAt(5));
+  model1.allQuiz.add(listCards.elementAt(6));
+  model1.allQuiz.add(listCards.elementAt(7));
+  model1.allQuiz.add(listCards.elementAt(8));
+  model1.allQuiz.add(listCards.elementAt(9));
+  model1.allQuiz.add(listCards.elementAt(10));
 
   list.add(model1);
 
   // QUIZ 2 - Protocols and Security
   QuizTestModel model2 = QuizTestModel();
   model2.heading = "Protocols and Security";
-  model2.image = quiza2;
+  model2.image = quiza1;
   model2.type = "Quiz";
   model2.description = "Ensuring the privacy and security of RFID systems is essential. Researchers explore cryptographic techniques, anti-counterfeiting methods, and privacy-enhancing protocols.";
   model2.status = "true";
@@ -106,9 +106,9 @@ List<QuizTestModel> quizGetData() {
   model3.status = "true";
   model3.allQuiz.add(listCards[3]);
   model3.allQuiz.add(listCards[4]);
-  model1.allQuiz.add(listCards[6]);
-  model1.allQuiz.add(listCards[7]);
-  model1.allQuiz.add(listCards[8]);
+  model3.allQuiz.add(listCards[6]);
+  model3.allQuiz.add(listCards[7]);
+  model3.allQuiz.add(listCards[8]);
 
   list.add(model3);
 
